@@ -1,0 +1,75 @@
+#以下内容请根据情况修改并添加到配置中心
+#日志打印相关
+logging:
+  path: /data/log/
+  level:
+    root: info
+  config: classpath:logback-spring.xml
+
+#端口号
+server:
+  port: 7070
+
+#熔断的开关
+feign:
+  hystrix:
+    enabled: true
+
+#熔断触发的时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000
+
+#针对Feign服务的重试及超时设置
+#app:
+#  ribbin:
+#    ConnectTimeout: 500
+    #Ribbon读取超时时间
+#    ReadTimeout: 1000
+    #重试设置
+#    OKToRetryOnAllOperations: true
+    #失败几次则换服务实例
+#    MaxAutoRetries: 1
+    #更换服务实例的次数
+#    MaxAutoRetriesNextServer: 2
+
+
+spring:
+  profiles:
+    active: debug
+  datasource:
+    schema: classpath:sql/schema.sql
+    initialize: true
+    continue-on-error: true
+    name: eyes_tw
+    # mysql username
+    username: my_db1_user
+    # Mysql password
+    password: sumLoader#1990
+    # Mysql connection url
+    url: jdbc:mysql://39.106.128.112:13306/eyes_tw?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=true&createDatabaseIfNotExist=true&zeroDateTimeBehavior=convertToNull
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    sql-script-encoding: UTF-8
+    tomcat:
+         max-active: 20
+         max-idle: 20
+         max-wait: 60000
+         min-idle: 1
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+es:
+  clusterName: sp_single_179
+  clientIp: http://192.168.1.179
+  pingTimeout: 120
+  samplerInterval: 120
+neo4j:
+  username: neo4j
+  password: mg2014
+  uri: bolt://10.10.31.30:7687
