@@ -65,8 +65,8 @@ mybatis:
     map-underscore-to-camel-case: true
 
 es:
-  clusterName: sp_single_179
-  clientIp: 192.168.1.179
+  clusterName: elasticsearch
+  clientIp: 39.106.128.112
   pingTimeout: 120
   samplerInterval: 120
 neo4j:
